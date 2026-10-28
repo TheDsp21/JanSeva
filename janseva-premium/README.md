@@ -6,6 +6,9 @@
 3. Start the server from the repository root with `npm start`.
 4. Open `http://localhost:3000`.
 
+## Public demo on GitHub Pages
+The static demo is published at https://thedsp21.github.io/JanSeva/ by the GitHub Actions workflow when changes are pushed to `main`. It does not require Render or MongoDB. Grievances are saved only in each visitor's browser using `localStorage`; they are not shared across visitors or devices.
+
 ## Prototype features
 - Premium responsive citizen portal UI
 - Grievance submission with required fields and automatic reference ID
