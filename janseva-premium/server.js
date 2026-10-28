@@ -1,16 +1,15 @@
-require("dotenv").config();
+const path = require("path");
+
+require("dotenv").config({ path: path.join(__dirname, ".env") });
 
 const express = require("express");
 const { MongoClient } = require("mongodb");
-const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.static(__dirname));
-
-const client = new MongoClient(process.env.MONGODB_URI);
 
 let grievances;
 
@@ -69,9 +68,10 @@ app.get("/api/grievances", async (req, res) => {
 async function startServer() {
   try {
     if (!process.env.MONGODB_URI) {
-      throw new Error("MONGODB_URI is missing from your .env file");
+      throw new Error("MONGODB_URI is not configured");
     }
 
+    const client = new MongoClient(process.env.MONGODB_URI);
     await client.connect();
 
     const database = client.db(process.env.MONGODB_DB || "janseva");

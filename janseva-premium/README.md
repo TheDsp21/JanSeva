@@ -1,10 +1,10 @@
 # JanSeva — Premium Grievance Portal Prototype
 
 ## Run locally
-1. Extract the ZIP.
-2. Open the `janseva-premium` folder in VS Code.
-3. Install the VS Code extension **Live Server** (or use any local static server).
-4. Open `index.html` and choose **Open with Live Server**.
+1. Install dependencies from the repository root with `npm install`.
+2. Set `MONGODB_URI` in `janseva-premium/.env`. Optionally set `MONGODB_DB` (defaults to `janseva`).
+3. Start the server from the repository root with `npm start`.
+4. Open `http://localhost:3000`.
 
 ## Prototype features
 - Premium responsive citizen portal UI
@@ -15,7 +15,11 @@
 - Browser-local persistence with `localStorage`
 
 ## Important limitations
-This version is a front-end demonstration. Data is stored only in the current browser and is not shared across devices. The officer dashboard is not protected by authentication, and the prototype is not connected to any government department. Do not enter sensitive or real personal information.
+This is a prototype and is not connected to any government department. The officer dashboard and grievance API are not protected by authentication. Do not enter sensitive or real personal information, especially after deploying publicly.
 
-## Firebase next step
-Before public deployment, connect Firebase Authentication and Firestore, implement server-enforced access controls and validation, and test rules using the Firebase Emulator Suite. Never place private service-account keys in front-end code.
+## Deploy to Render
+1. In the Render dashboard, create a **Blueprint** and connect this GitHub repository.
+2. Render will read `render.yaml` and prompt for `MONGODB_URI`. Enter the MongoDB connection string as a secret in Render; never commit it to the repository. `MONGODB_DB` defaults to `janseva`.
+3. Ensure your MongoDB Atlas network access settings allow connections from Render, then deploy the Blueprint.
+
+The deployed service is public. Add authentication and server-side access controls before using it with real grievance data.
