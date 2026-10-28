@@ -79,7 +79,7 @@ async function startServer() {
 
     console.log("Connected to MongoDB Atlas successfully!");
 
-    app.listen(PORT, () => {
+    app.listen(PORT, "0.0.0.0", () => {
       console.log(`JanSeva running at http://localhost:${PORT}`);
     });
   } catch (error) {
